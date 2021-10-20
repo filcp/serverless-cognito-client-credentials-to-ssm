@@ -68,12 +68,10 @@ class CognitoClientCredentialsToSSMPlugin {
             cognitoUserPoolClientIdOutputKey,
             cognitoUserPoolId,
         );
-        const existingParameter: Record<string, unknown> | undefined = await this.awsClient.getExistingSSMParameter(
+        const parameterValue: Record<string, unknown> = await this.formatParameter(
             ssmParameterName,
+            cognitoUserPoolClient,
         );
-        const parameterValue = existingParameter
-            ? assign(existingParameter, cognitoUserPoolClient)
-            : cognitoUserPoolClient;
 
         await this.awsClient.putSSMParameter(ssmParameterName, parameterValue);
     }
@@ -100,6 +98,17 @@ class CognitoClientCredentialsToSSMPlugin {
                 },
             },
         };
+    }
+
+    private async formatParameter(
+        ssmParameterName: string,
+        cognitoUserPoolClient: CognitoUserPoolClient,
+    ): Promise<Record<string, unknown>> {
+        const existingParameter: Record<string, unknown> | undefined = await this.awsClient.getExistingSSMParameter(
+            ssmParameterName,
+        );
+
+        return existingParameter ? assign(existingParameter, cognitoUserPoolClient) : cognitoUserPoolClient;
     }
 }
 
