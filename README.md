@@ -15,7 +15,7 @@ This plugin is meant to help mitigate this manual process. So after Serverless d
 4. It wil query Parameter Store to see if there are existing parameter for this service.
 5. It will merge the credentials with existing paramter and save it in Parameter Store 
 
-
+![Context Diagram](https://github.com/filcp/serverless-cognito-client-credentials-to-ssm/blob/main/context-diagram.png?raw=true)
 ## Installation
 Install via npm in the root of your Serverless service:
 
