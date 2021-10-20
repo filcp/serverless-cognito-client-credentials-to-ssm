@@ -1,0 +1,60 @@
+{
+    "name": "serverless-cognito-client-credentials-to-ssm",
+    "description": "Gets Cognito's app client credentials and stores them in Parameter Store",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "test": "jest",
+        "build": "tsc --project tsconfig.json",
+        "format": "prettier --write \"src/**/*.ts\" \"__tests__/**/*.ts\"",
+        "lint": "eslint \"src/**\"",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test && npm run lint",
+        "preversion": "npm run lint",
+        "version": "npm run format && git add -A src",
+        "postversion": "git push && git push --tags"
+    },
+    "author": "filcp",
+    "keywords": [
+        "serverless",
+        "plugin",
+        "cognito",
+        "user-pool",
+        "app-client",
+        "cognito-app-client",
+        "parameter-store"
+    ],
+    "license": "ISC",
+    "homepage": "https://github.com/filcp/serverless-cognito-client-credentials-to-ssm#readme",
+    "bugs": {
+        "url": "https://github.com/filcp/serverless-cognito-client-credentials-to-ssm/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/filcp/serverless-cognito-client-credentials-to-ssm.git"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.965.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.24",
+        "@types/node": "^16.3.3",
+        "@types/serverless": "^1.78.32",
+        "@typescript-eslint/eslint-plugin": "^3.10.1",
+        "@typescript-eslint/parser": "^3.10.1",
+        "eslint": "^7.7.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-no-null": "^1.0.2",
+        "eslint-plugin-prettier": "^3.4.0",
+        "jest": "^27.0.6",
+        "prettier": "^2.3.2",
+        "serverless": "^2.52.0",
+        "ts-jest": "^27.0.4",
+        "typescript": "^4.3.5"
+    },
+    "files": [
+        "lib/**/*"
+    ]
+}
